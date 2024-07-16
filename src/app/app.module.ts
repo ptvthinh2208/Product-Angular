@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ShopModule } from './shop/shop.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ShopModule } from './shop/shop.module';
     CoreModule,
     SharedModule,
     HttpClientModule,
-    ShopModule
+    ShopModule,
+    HomeModule
   ],
   providers: [
     provideClientHydration()
