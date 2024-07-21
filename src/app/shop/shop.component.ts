@@ -3,6 +3,8 @@ import { ShopService } from './shop.service';
 import { IProduct } from '../shared/Products';
 import { Icategory } from '../shared/Categories';
 import { ShopParams } from '../shared/Shopparams';
+import { ActivatedRoute } from '@angular/router';
+import { parse } from 'path';
 
 @Component({
   selector: 'app-shop',
@@ -15,11 +17,10 @@ export class ShopComponent implements OnInit{
   categories: Icategory[];
   ShopParams = new ShopParams;
 
-  constructor(private shopservice:ShopService){
+  constructor(private shopservice:ShopService, private activeroute: ActivatedRoute){
 
   }
   ngOnInit(): void {
-    
     this.getproduct();
     this.getcategory();
   }
@@ -32,12 +33,17 @@ export class ShopComponent implements OnInit{
       })
   }
   getcategory() {
-    this.shopservice.getCategories()
-    .subscribe((res) => {this.categories = res})
+    this.shopservice.getCategories().subscribe(res => { this.categories = [{ id: 0, name: 'All', description: '' }, ...res] })
+  }
+  oncategoryselect(categoryid: number) {
+    console.log(categoryid);
+    this.ShopParams.categoryid = categoryid;
+    this.getproduct();
   }
   //event page change
   onPageChanged(event:any)
   {
+    console.log(this.ShopParams.categoryid);
     if(this.ShopParams.pageNumber !== event){
       this.ShopParams.pageNumber = event;
       this.getproduct(); 

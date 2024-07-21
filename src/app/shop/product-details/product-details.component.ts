@@ -14,13 +14,10 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.loadproduct();
   }
-
   loadproduct() {
     this.shopservice.getProduct(parseInt(this.activeroute.snapshot.paramMap.get('id')!)).subscribe
       (res => {
         this.product = res;
-        
-
       });
   }
 

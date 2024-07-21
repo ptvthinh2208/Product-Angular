@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,6 +12,7 @@ import { RouterOutlet } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    RouterModule
   ],
   exports: [
     HomeComponent

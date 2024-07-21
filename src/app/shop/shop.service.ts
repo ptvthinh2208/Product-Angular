@@ -34,6 +34,7 @@ export class ShopService {
   }
   getProduct(id:number)
   {
+    //console.log(id);
     return this.http.get<IProduct>(this.BaseUrl+'Product/get-product-by-id/'+id);
   }
 }
